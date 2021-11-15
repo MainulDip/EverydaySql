@@ -1,0 +1,41 @@
+version: "3.9"
+services: # adds 2 services: mysql and phpmyadmin to connect with
+  db:
+    image: mysql:8.0.27 # use latest version of mysql
+    container_name: my-mysql-db-con # add a name for the container
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment: # add default values, see docs for more info.
+      MYSQL_USER: mainul
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_PASSWORD: password
+      MYSQL_DATABASE: testdb # create this database on startup
+    volumes:
+      - my-data:/var/lib/mysql
+    ports:
+      - '3306:3306'
+    networks:
+      - my-mysql-phpmyadmin-network
+  
+  phpmyadmin:
+    container_name: my-phpmyadmin-con
+    image: phpmyadmin:5.1.1
+    restart: always
+    ports:
+     - "8080:80"
+    environment:
+      MYSQL_ROOT_PASSWORD: password #(Required) set the password for the root superuser account.
+      PMA_HOST: my-mysql-db-con  # define the address/hostname of the mysql server eg mysql container name.
+      #PMA_USER: admin # this is the root user to login on startup
+      #PMA_PASSWORD: password # use the root password to login on startup.
+      # Create a new user on startup (optional)
+      # MYSQL_USER: newuser
+      # MYSQL_PASSWORD: mypassword
+    networks:
+      - my-mysql-phpmyadmin-network
+
+volumes:
+  my-data:
+
+networks: # add network to connect to mysql and phpmyadmin
+  my-mysql-phpmyadmin-network:
