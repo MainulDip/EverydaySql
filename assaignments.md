@@ -1,1 +1,89 @@
 ###  Create a database using the attached "Jaunty Coffee Co. ERD" by doing the following:
+
+1.  Develop SQL code to create each table as specified in the attached “Jaunty Coffee Co. ERD” by doing the following:
+a.  Provide the SQL code you wrote to create all the tables.
+
+```sh
+CREATE TABLE IF NOT EXISTS COFFEE_SHOP(
+shop_id INT AUTO_INCREMENT,
+shop_name VARCHAR(50),
+city VARCHAR(50),
+state CHAR(2),
+PRIMARY KEY (shop_id)
+);
+
+CREATE TABLE IF NOT EXISTS SUPPLIER(
+supplier_id INT AUTO_INCREMENT,
+company_name VARCHAR(50),
+country VARCHAR(30),
+sales_contact_name VARCHAR(60),
+email VARCHAR(50) NOT NULL,
+PRIMARY KEY (supplier_id)
+);
+
+CREATE TABLE IF NOT EXISTS COFFEE(
+coffee_id INT AUTO_INCREMENT,
+shop_id INT,
+supplier_id INT,
+coffee_name VARCHAR(30),
+price_per_pound NUMERIC(5,2),
+PRIMARY KEY (coffee_id),
+FOREIGN KEY (shop_id) REFERENCES COFFEE_SHOP(shop_id),
+FOREIGN KEY (supplier_id) REFERENCES SUPPLIER(supplier_id)
+);
+
+CREATE TABLE IF NOT EXISTS EMPLOYEE(
+employee_id INT AUTO_INCREMENT,
+first_name VARCHAR(30),
+last_name VARCHAR(30),
+hire_date DATETIME,
+job_title VARCHAR(50),
+shop_id INT,
+PRIMARY KEY (employee_id),
+FOREIGN KEY (shop_id) REFERENCES COFFEE_SHOP(shop_id)
+);
+```
+b.  Demonstrate that you tested your code by providing a screenshot showing your SQL commands and the database server’s response.
+
+
+2.  Develop SQL code to populate each table in the database design document by doing the following:
+ 
+Note: This data is not provided. You will be fabricating the data for this step.
+
+```sh
+CREATE TABLE IF NOT EXISTS `COFFEE_SHOP` (
+`shop_id` INT AUTO_INCREMENT,
+`shop_name` VARCHAR(50),
+`city` VARCHAR(50),
+`state` CHAR(2),
+PRIMARY KEY (`shop_id`)
+) DEFAULT CHARSET=utf8;
+INSERT INTO `COFFEE_SHOP` (`shop_id`, `shop_name`, `city`, `state`) VALUES
+  ('1', 'SKYSHOP', 'Gorgia','77'),
+  ('2', 'SKYSHOP', 'Gorgia','77'),
+  ('3', 'SKYSHOP', 'Gorgia','77'),
+  ('4', 'SKYSHOP', 'Gorgia','77');
+```
+ 
+a.  Provide the SQL code you wrote to populate the tables with at least three rows of data in each table.
+b.  Demonstrate that you tested your code by providing a screenshot showing your SQL commands and the database server’s response.
+
+
+3.  Develop SQL code to create a view by doing the following: 
+a.  Provide the SQL code you wrote to create your view. The view should show all of the information from the “Employee” table but
+concatenate each employee’s first and last name, formatted with a space between the first and last name, into a new attribute called employee_full_name.
+
+4.  Develop SQL code to create an index on the coffee_name field by doing the following:
+a.  Provide the SQL code you wrote to create your index on the coffee_name field from the “Coffee” table.
+b.  Demonstrate that you tested your code by providing a screenshot showing your SQL commands and the database server’s response.
+5.  Develop SQL code to create an SFW (SELECT–FROM–WHERE) query for any of your tables or views by doing the following: 
+a.  Provide the SQL code you wrote to create your SFW query.
+b.  Demonstrate that you tested your code by providing a screenshot showing your SQL commands and the database server’s response.
+6.  Develop SQL code to create a query by doing the following:
+a.  Provide the SQL code you wrote to create your table joins query. The query should join together three different tables and include
+attributes from all three tables in its output.
+b.  Demonstrate that you tested your code by providing a screenshot showing your SQL commands and the database server’s response.
+ 
+C.  Submit parts A and B as a PDF, with each part clearly labeled.
+ 
+D.  Demonstrate professional communication in the content and presentation of your submission.
