@@ -139,10 +139,27 @@ SHOW INDEX FROM `COFFEE`;
 5.  Develop SQL code to create an SFW (SELECT–FROM–WHERE) query for any of your tables or views by doing the following: 
 a.  Provide the SQL code you wrote to create your SFW query.
 b.  Demonstrate that you tested your code by providing a screenshot showing your SQL commands and the database server’s response.
+
+```sh
+SELECT * FROM `EMPLOYEE` WHERE employee_id = 1;
+```
+
 6.  Develop SQL code to create a query by doing the following:
 a.  Provide the SQL code you wrote to create your table joins query. The query should join together three different tables and include
 attributes from all three tables in its output.
 b.  Demonstrate that you tested your code by providing a screenshot showing your SQL commands and the database server’s response.
+
+```sh
+SELECT
+comments.body,
+posts.title,
+users.first_name,
+users.last_name
+FROM comments
+INNER JOIN posts on posts.id = comments.post_id
+INNER JOIN users on users.id = comments.user_id
+ORDER BY posts.title;
+```
  
 C.  Submit parts A and B as a PDF, with each part clearly labeled.
  
