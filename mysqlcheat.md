@@ -225,6 +225,10 @@ SELECT * FROM users WHERE dept IN ('design', 'sales');
 
 ```sql
 CREATE INDEX LIndex On users(location);
+SHOW INDEX FROM table_name;
+CREATE NONCLUSTERED INDEX LIndex On users(location);
+CREATE <UNIQUE>|<FULLTEXT>|<NONCLUSTERED> INDEX IndexName On table_name(table_column);
+ALTER TABLE table_name ADD <UNIQUE>|<FULLTEXT>|<NONCLUSTERED> INDEX IndexName (column_list);
 DROP INDEX LIndex ON users;
 ```
 

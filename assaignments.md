@@ -130,6 +130,12 @@ SELECT employee_id, CONCAT(first_name, ' ', last_name) AS employee_full_name, jo
 4.  Develop SQL code to create an index on the coffee_name field by doing the following:
 a.  Provide the SQL code you wrote to create your index on the coffee_name field from the “Coffee” table.
 b.  Demonstrate that you tested your code by providing a screenshot showing your SQL commands and the database server’s response.
+
+```sh
+CREATE INDEX CoffeeIndex On COFFEE(coffee_name);
+SHOW INDEX FROM `COFFEE`;
+```
+
 5.  Develop SQL code to create an SFW (SELECT–FROM–WHERE) query for any of your tables or views by doing the following: 
 a.  Provide the SQL code you wrote to create your SFW query.
 b.  Demonstrate that you tested your code by providing a screenshot showing your SQL commands and the database server’s response.
