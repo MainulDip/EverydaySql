@@ -59,10 +59,52 @@ CREATE TABLE IF NOT EXISTS `COFFEE_SHOP` (
 PRIMARY KEY (`shop_id`)
 ) DEFAULT CHARSET=utf8;
 INSERT INTO `COFFEE_SHOP` (`shop_id`, `shop_name`, `city`, `state`) VALUES
-  ('1', 'SKYSHOP', 'Gorgia','77'),
-  ('2', 'SKYSHOP', 'Gorgia','77'),
-  ('3', 'SKYSHOP', 'Gorgia','77'),
-  ('4', 'SKYSHOP', 'Gorgia','77');
+('1', 'Cat & Cloud', 'Santa Cruz','77'),
+('2', 'Orchard Coffee', 'Waynesville','77'),
+('3', 'Mom \'n \'Em Coffee', 'Cincinnati','77');
+
+CREATE TABLE IF NOT EXISTS `SUPPLIER`(
+'supplier_id' INT AUTO_INCREMENT,
+'company_name' VARCHAR(50),
+'country' VARCHAR(30),
+'sales_contact_name' VARCHAR(60),
+'email' VARCHAR(50) NOT NULL,
+PRIMARY KEY ('supplier_id')
+) DEFAULT CHARSET=utf8;
+INSERT INTO 'SUPPLIER' ('supplier_id', 'company_name', 'country', 'sales_contact_name', 'email') VALUES
+('1', 'AmericanoCorp', 'Canada', 'John Doe', 'johndoe@americano.com'),
+('2', 'MacchiatoCorp', 'USA', 'Kale Smith', 'kalesmith@macchiato.com'),
+('3', 'EspressoCorp', 'Mexico', 'Noam Chomsky', 'noamchomsky@espresso.com');
+
+CREATE TABLE IF NOT EXISTS `COFFEE`(
+'coffee_id' INT AUTO_INCREMENT,
+'shop_id' INT,
+'supplier_id' INT,
+'coffee_name' VARCHAR(30),
+'price_per_pound' NUMERIC(5,2),
+PRIMARY KEY ('coffee_id'),
+FOREIGN KEY ('shop_id') REFERENCES COFFEE_SHOP('shop_id'),
+FOREIGN KEY ('supplier_id)' REFERENCES SUPPLIER('supplier_id')
+) DEFAULT CHARSET=utf8;
+INSERT INTO 'COFFEE' ('coffee_id', 'shop_id', 'supplier_id', 'coffee_name', 'price_per_pound') VALUES
+('1', '4', '3', 'Espresso', '3.00'),
+('1', '2', 'supplier_id', 'Macchiato', '4.00'),
+('1', '2', 'supplier_id', 'Americano', '2.77');
+
+CREATE TABLE IF NOT EXISTS `EMPLOYEE`(
+'employee_id' INT AUTO_INCREMENT,
+'first_name' VARCHAR(30),
+'last_name' VARCHAR(30),
+'hire_date' DATETIME,
+'job_title' VARCHAR(50),
+'shop_id' INT,
+PRIMARY KEY ('employee_id'),
+FOREIGN KEY ('shop_id') REFERENCES COFFEE_SHOP('shop_id')
+) DEFAULT CHARSET=utf8;
+INSERT INTO 'EMPLOYEE' ('employee_id', 'first_name', 'last_name', 'hire_date', 'job_title', 'shop_id') VALUES
+();
+();
+();
 ```
  
 a.  Provide the SQL code you wrote to populate the tables with at least three rows of data in each table.
