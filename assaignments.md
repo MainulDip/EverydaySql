@@ -2,6 +2,7 @@
 
 1.  Develop SQL code to create each table as specified in the attached “Jaunty Coffee Co. ERD” by doing the following:
 a.  Provide the SQL code you wrote to create all the tables.
+b.  Demonstrate that you tested your code by providing a screenshot showing your SQL commands and the database server’s response.
 
 ```sh
 CREATE TABLE IF NOT EXISTS COFFEE_SHOP(
@@ -43,12 +44,14 @@ PRIMARY KEY (employee_id),
 FOREIGN KEY (shop_id) REFERENCES COFFEE_SHOP(shop_id)
 );
 ```
-b.  Demonstrate that you tested your code by providing a screenshot showing your SQL commands and the database server’s response.
 
 
 2.  Develop SQL code to populate each table in the database design document by doing the following:
  
 Note: This data is not provided. You will be fabricating the data for this step.
+
+a.  Provide the SQL code you wrote to populate the tables with at least three rows of data in each table.
+b.  Demonstrate that you tested your code by providing a screenshot showing your SQL commands and the database server’s response.
 
 ```sh
 CREATE TABLE IF NOT EXISTS `COFFEE_SHOP` (
@@ -89,7 +92,7 @@ FOREIGN KEY (`supplier_id`) REFERENCES `SUPPLIER`(`supplier_id`)
 INSERT INTO `COFFEE` (`coffee_id`, `shop_id`, `supplier_id`, `coffee_name`, `price_per_pound`) VALUES
 ('1', '1', '3', 'Espresso', '3.00'),
 ('2', '2', '2', 'Macchiato', '4.00'),
-('3', '2', '1', 'Americano', '2.77');
+('3', '3', '1', 'Americano', '2.77');
 
 CREATE TABLE IF NOT EXISTS `EMPLOYEE`(
 `employee_id` INT AUTO_INCREMENT,
@@ -107,7 +110,7 @@ INSERT INTO `EMPLOYEE` (`employee_id`, `first_name`, `last_name`, `job_title`, `
 ('3', 'leonardo', 'da Vinci', 'versetile executive', '1');
 ```
 
-### After Successful Build, run this on right side
+### After Successful Build, run this on the right side
 ```sh
 SELECT * FROM coffee;
 SELECT * FROM coffee_shop;
@@ -115,8 +118,6 @@ SELECT * FROM employee;
 SELECT * FROM supplier;
 ```
  
-a.  Provide the SQL code you wrote to populate the tables with at least three rows of data in each table.
-b.  Demonstrate that you tested your code by providing a screenshot showing your SQL commands and the database server’s response.
 
 
 3.  Develop SQL code to create a view by doing the following: 
@@ -151,16 +152,26 @@ b.  Demonstrate that you tested your code by providing a screenshot showing your
 
 ```sh
 SELECT
-comments.body,
-posts.title,
-users.first_name,
-users.last_name
-FROM comments
-INNER JOIN posts on posts.id = comments.post_id
-INNER JOIN users on users.id = comments.user_id
-ORDER BY posts.title;
+SUPPLIER.company_name,
+SUPPLIER.country,
+SUPPLIER.sales_contact_name,
+SUPPLIER.email,
+COFFEE.coffee_name,
+COFFEE.price_per_pound,
+EMPLOYEE.first_name,
+EMPLOYEE.last_name
+FROM SUPPLIER
+INNER JOIN COFFEE on SUPPLIER.supplier_id = COFFEE.supplier_id
+INNER JOIN EMPLOYEE on COFFEE.shop_id = EMPLOYEE.shop_id;
 ```
- 
+
+NOTE: Commands to create inner join
+```sh
+SELECT TABLE1.column_name, TABLE2.column_name, TABLE3.column_name
+FROM table1
+INNER JOIN table2 ON table1.column_name = table2.column_name
+INNER JOIN table3 ON table2.column_name = table3.column_name;
+``` 
 C.  Submit parts A and B as a PDF, with each part clearly labeled.
  
-D.  Demonstrate professional communication in the content and presentation of your submission.
+D.  Demonstrate professional communication in the content and presentation of your submission
