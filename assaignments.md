@@ -1,12 +1,12 @@
-###  Create a database using the attached "Jaunty Coffee Co. ERD" by doing the following:
+##  Create a database using the attached "Jaunty Coffee Co. ERD" by doing the following:
 
-1.  Develop SQL code to create each table as specified in the attached “Jaunty Coffee Co. ERD” by doing the following:
+### 1.  Develop SQL code to create each table as specified in the attached “Jaunty Coffee Co. ERD” by doing the following:
 
 a.  Provide the SQL code you wrote to create all the tables.
 
 b.  Demonstrate that you tested your code by providing a screenshot showing your SQL commands and the database server’s response.
 
-```sh
+```sql
 CREATE TABLE IF NOT EXISTS COFFEE_SHOP(
 shop_id INT AUTO_INCREMENT,
 shop_name VARCHAR(50),
@@ -47,8 +47,10 @@ FOREIGN KEY (shop_id) REFERENCES COFFEE_SHOP(shop_id)
 );
 ```
 
+![Screenshot 1i](./assets/SQL-Fiddle1i.png)
+![Screenshot 1ii](./assets/SQL-Fiddle1ii.png)
 
-2.  Develop SQL code to populate each table in the database design document by doing the following:
+### 2.  Develop SQL code to populate each table in the database design document by doing the following:
  
 Note: This data is not provided. You will be fabricating the data for this step.
 
@@ -56,7 +58,7 @@ a.  Provide the SQL code you wrote to populate the tables with at least three ro
 
 b.  Demonstrate that you tested your code by providing a screenshot showing your SQL commands and the database server’s response.
 
-```sh
+```sql
 CREATE TABLE IF NOT EXISTS `COFFEE_SHOP` (
 `shop_id` INT AUTO_INCREMENT,
 `shop_name` VARCHAR(50),
@@ -113,53 +115,62 @@ INSERT INTO `EMPLOYEE` (`employee_id`, `first_name`, `last_name`, `job_title`, `
 ('3', 'leonardo', 'da Vinci', 'versetile executive', '1');
 ```
 
+
+![Screenshot 2i](./assets/SQL-Fiddle2i.png)
 ### After Successful Build, run this on the right side
-```sh
+```sql
 SELECT * FROM coffee;
 SELECT * FROM coffee_shop;
 SELECT * FROM employee;
 SELECT * FROM supplier;
 ```
- 
+![Screenshot 2ii](./assets/SQL-Fiddle2ii.png)
 
 
-3.  Develop SQL code to create a view by doing the following: 
+### 3.  Develop SQL code to create a view by doing the following: 
 
 a.  Provide the SQL code you wrote to create your view. The view should show all of the information from the “Employee” table but concatenate each employee’s first and last name, formatted with a space between the first and last name, into a new attribute called employee_full_name.
 
-```sh
+```sql
 SELECT employee_id, CONCAT(first_name, ' ', last_name) AS employee_full_name, job_title, shop_id FROM EMPLOYEE;
 ```
+![Screenshot 3](./assets/SQL-Fiddle3.png)
 
-4.  Develop SQL code to create an index on the coffee_name field by doing the following:
+
+### 4.  Develop SQL code to create an index on the coffee_name field by doing the following:
 
 a.  Provide the SQL code you wrote to create your index on the coffee_name field from the “Coffee” table.
 
 b.  Demonstrate that you tested your code by providing a screenshot showing your SQL commands and the database server’s response.
 
-```sh
+```sql
 CREATE INDEX CoffeeIndex On COFFEE(coffee_name);
 SHOW INDEX FROM `COFFEE`;
 ```
 
-5.  Develop SQL code to create an SFW (SELECT–FROM–WHERE) query for any of your tables or views by doing the following: 
+![Screenshot 4](./assets/SQL-Fiddle4.png)
+
+### 5.  Develop SQL code to create an SFW (SELECT–FROM–WHERE) query for any of your tables or views by doing the following: 
 
 a.  Provide the SQL code you wrote to create your SFW query.
 
 b.  Demonstrate that you tested your code by providing a screenshot showing your SQL commands and the database server’s response.
 
-```sh
+```sql
 SELECT * FROM `EMPLOYEE` WHERE employee_id = 1;
 ```
 
-6.  Develop SQL code to create a query by doing the following:
+![Screenshot 5](./assets/SQL-Fiddle5.png)
+
+### 6.  Develop SQL code to create a query by doing the following:
 
 a.  Provide the SQL code you wrote to create your table joins query. The query should join together three different tables and include
 attributes from all three tables in its output.
 
 b.  Demonstrate that you tested your code by providing a screenshot showing your SQL commands and the database server’s response.
 
-```sh
+### # The SQL Command:
+```sql
 SELECT
 SUPPLIER.company_name,
 SUPPLIER.country,
@@ -173,14 +184,18 @@ FROM SUPPLIER
 INNER JOIN COFFEE on SUPPLIER.supplier_id = COFFEE.supplier_id
 INNER JOIN EMPLOYEE on COFFEE.shop_id = EMPLOYEE.shop_id;
 ```
+### # Screenshot 6:
+![Screenshot 6](./assets/SQL-Fiddle6.png)
 
+
+C.  Submit parts A and B as a PDF, with each part clearly labeled.
+ 
+D.  Demonstrate professional communication in the content and presentation of your submission
+___
 NOTE: Commands to create inner join
-```sh
+```sql
 SELECT TABLE1.column_name, TABLE2.column_name, TABLE3.column_name
 FROM table1
 INNER JOIN table2 ON table1.column_name = table2.column_name
 INNER JOIN table3 ON table2.column_name = table3.column_name;
 ``` 
-C.  Submit parts A and B as a PDF, with each part clearly labeled.
- 
-D.  Demonstrate professional communication in the content and presentation of your submission
